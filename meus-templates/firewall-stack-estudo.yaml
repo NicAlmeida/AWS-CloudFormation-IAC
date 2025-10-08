@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Firewall simples vinculado com a EC2
+
+Resources:
+  FirewallPolicy:
+    Type: AWS::NetworkFirewall::FirewallPolicy
+    Properties:
+      FirewallPolicyName: FirewallEstudoPolicy
+      FirewallPolicy:
+        StatelessDefaultActions:
+          - aws:forward_to_sfe
+        StatelessFragmentDefaultActions:
+          - aws:forward_to_sfe
+
+  Firewall:
+    Type: AWS::NetworkFirewall::Firewall
+    Properties:
+      FirewallName: FirewallEstudo
+      FirewallPolicyArn: !Ref FirewallPolicy
+      VpcId: !ImportValue VPCId
+      SubnetMappings:
+        - SubnetId: !ImportValue PublicSubnetId
+      DeleteProtection: false
+      SubnetChangeProtection: false
+      FirewallPolicyChangeProtection: false
+
+Outputs:
+  FirewallName:
+    Description: Nome do firewall criado
+    Value: !Ref Firewall

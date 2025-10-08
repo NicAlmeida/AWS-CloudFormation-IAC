@@ -49,3 +49,20 @@ Ou seja, em vez de criar recursos manualmente pelo console da AWS, você escreve
 - Alguns templates não usam KeyPair, então não é possível acessar a EC2 via SSH.  
 - O objetivo é aprender **infraestrutura como código** e como a AWS cria recursos automaticamente.
 
+### Modelos prontos e diferença entre CloudFormation e Terraform
+
+Aqui no repositório você encontra **templates prontos do CloudFormation** para estudo, tipo:  
+- EC2 simples  
+- EC2 com Apache  
+- Firewall  
+- S3  
+- IAM User e Group  
+
+Esses modelos são pra você **subir a infraestrutura automaticamente** sem precisar criar tudo na mão no console da AWS.  
+
+#### Diferença entre CloudFormation e Terraform
+
+- **CloudFormation** é da AWS, feito só pra criar recursos na AWS. Você escreve **templates YAML ou JSON**, sobe a stack, e a AWS cria tudo pra você.  
+- **Terraform** é da HashiCorp, funciona com várias nuvens (AWS, Azure, GCP…) e também com serviços fora da nuvem. Você escreve **arquivos HCL**, e ele gerencia a infraestrutura, incluindo alterações e atualizações.  
+
+
